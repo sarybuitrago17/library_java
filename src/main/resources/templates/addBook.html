@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registrar Libro</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+              :root {
+    --color1: blue;
+    --color2: red;
+    --color3: green;
+    --color4: yellow;
+    --color5: rgb(212, 222, 236);
+    --color6:rgb(255, 255, 255);
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+img {
+    display: block;
+    width: 100%;
+    object-fit: contain;
+}
+
+    body {
+        font-family: 'Roboto', sans-serif;
+        background-color: var(--color5);
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .contain {
+        background-color: var(--color6);
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        width: 100%;
+        max-width: 500px;
+    }
+
+    .contain a {
+        display: block;
+        margin-bottom: 20px;
+        text-decoration: none;
+        color: var(--color6);
+        font-weight: bold;
+        background-color: var(--color1);
+        text-align: center;
+        padding: .4em;
+        max-width: 10em;
+        margin: auto;
+        margin-bottom: 2em;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    .form-group input {
+        width: 100%;
+        max-width: 30em;
+        padding: 10px;
+        border: 1px solid var(--color5);
+        border-radius: 5px;
+        font-size: 16px;
+    }
+
+    .form-group input:focus {
+        border-color: var(--color3);
+        outline: none;
+    }
+
+    .submit-btn {
+        width: 100%;
+        padding: 10px;
+        background-color: var(--color3);
+        border: none;
+        border-radius: 5px;
+        color: var(--color6);
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .submit-btn:hover {
+        background-color: var(--color1);
+    }
+
+    .submit-btn:active {
+        background-color: var(--color1);
+    }
+</style>
+</head>
+<body>
+<div class="contain">
+    <a href="/welcome">Volver</a>
+    <form id="registerForm" class="Login-form">
+        <div class="form-group">
+            <label for="title">Title:</label>
+            <input type="text" id="title" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="author">Author:</label>
+            <input type="text" id="author" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="isbn">ISBN:</label>
+            <input type="text" id="isbn" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="precio">Precio:</label>
+            <input type="text" id="precio" class="form-control" required>
+        </div>
+        <input type="submit" class="submit-btn" value="Registrar" />
+    </form>
+</div>
+    <script>
+        document.getElementById('registerForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Evita el comportamiento predeterminado de recarga de la página
+
+            // Captura los valores del formulario
+            const title = document.getElementById('title').value;
+            const author = document.getElementById('author').value;
+            const isbn = document.getElementById('isbn').value;
+            const precio = document.getElementById('precio').value;
+
+            // Crea un objeto con los datos del formulario
+            const bookData = {
+                title: title,
+                author: author,
+                isbn: isbn,
+                price: precio
+            };
+
+            // Envía los datos a la API usando fetch
+            fetch('http://localhost:8080/api/libros', { // Cambia la URL a la de tu API
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(bookData)
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('Respuesta de la API:', data);
+                alert('Libro registrado exitosamente');
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Hubo un error al registrar el libro');
+            });
+        });
+    </script>
+</body>
+</html>

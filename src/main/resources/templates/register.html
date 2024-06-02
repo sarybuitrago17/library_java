@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html>
+<head>
+    <title>Registro de Usuario</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+        :root {
+    --color1: blue;
+    --color2: red;
+    --color3: green;
+    --color4: yellow;
+    --color5: white;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+img {
+    display: block;
+    width: 100%;
+    object-fit: contain;
+}
+
+.Login {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 100vh;
+    position: relative;
+}
+.Volver {
+    position:absolute;
+    top: 0;
+    left: 0;
+    padding: .2em;
+    background-color: var(--color5);
+    margin-top: .5em;
+    width: 100%;
+    max-width: 5em;
+    text-align: center;
+}
+.Volver > a {
+    text-decoration: none;
+    color: var(--color1);
+    font-size: .8em;
+}
+.Login-div1 {
+    background-color: var(--color1);
+    width: 100%;
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    color: var(--color5);
+    gap: 2em;
+}
+.Login-div1 > i {
+    font-size: 10em;
+    color: var(--color3);
+}
+.Login-div2 {
+    width: 100%;
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    gap: 2em;
+}
+.Login-div2 > figure > i {
+    font-size: 10em;
+    color: var(--color1);
+}
+.Login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+.Login-form > div {
+    display: flex;
+    flex-direction: column;
+}
+.Login-form > div > label {
+    width: 100%;
+    font-size: 1.2em;
+    font-weight: 700;
+}
+.Login-form > div > input {
+    border: none;
+    border-bottom: 1px solid black;
+    padding-left: 1em;
+    font-size: 1.2em;
+}
+.Login-form  > input {
+    margin-top: 1.2em;
+    background-color: var(--color1);
+    border: none;
+    padding: .4em;
+    font-size: 1em;
+    color: var(--color5);
+    border-radius: .3em;
+}
+    </style>
+</head>
+<body>
+    <div class="Login">
+        <div class="Login-div1">
+            <h1 class="Volver"><a href="/">Volver</a></h1>
+            <h1>Libreria</h1>
+            <i class='bx bxs-book-bookmark'></i>
+            <p>Desarrolladora Sary</p>
+        </div>
+        <div class="Login-div2">
+            <h1>Registrar usuario</h1>
+            <figure>
+                <i class='bx bxs-user-plus'></i>
+            </figure>
+            <form class="Login-form"  action="/users/register" method="post">
+                <div>
+                    <label for="firstName">Nombre:</label>
+                    <input type="text" id="firstName" name="firstName" required>
+                </div>
+                <div>
+                    <label for="lastName">Apellido:</label>
+                    <input type="text" id="lastName" name="lastName" required>
+                </div>
+                <div>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div>
+                    <label for="password">Contraseña:</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <input type="submit" value="Registrar" />
+            </form>
+        </div>
+    </div>
+</body>
+</html>

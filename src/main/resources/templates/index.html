@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 31/05/2024, 6:39:45 p. m.
+    Author     : sary buitrago
+*/
+
+:root {
+    --color1: blue;
+    --color2: red;
+    --color3: green;
+    --color4: yellow;
+    --color5: white;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+img {
+    display: block;
+    width: 100%;
+    object-fit: contain;
+}
+
+.Login {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 100vh;
+}
+.Login-div1 {
+    background-color: var(--color1);
+    width: 100%;
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    color: var(--color5);
+    gap: 2em;
+}
+.Login-div1 > i {
+    font-size: 10em;
+    color: var(--color3);
+}
+.Login-div2 {
+    width: 100%;
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    gap: 2em;
+}
+.Login-div2 > figure > i {
+    font-size: 10em;
+    color: var(--color1);
+}
+.Login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+.Login-form > div {
+    display: flex;
+    flex-direction: column;
+}
+.Login-form > div > label {
+    width: 100%;
+    font-size: 1.2em;
+    font-weight: 700;
+}
+.Login-form > div > input {
+    border: none;
+    border-bottom: 1px solid black;
+    padding-left: 1em;
+    font-size: 1.2em;
+}
+.Login-form  > input {
+    margin-top: 1.2em;
+    background-color: var(--color1);
+    border: none;
+    padding: .4em;
+    font-size: 1em;
+    color: var(--color5);
+    border-radius: .3em;
+}
+    </style>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <div class="Login">
+        <div class="Login-div1">
+            <h1>Libreria</h1>
+            <i>🧑‍🏫</i>
+            <p>Desarrolladora Sary</p>
+        </div>
+        <div class="Login-div2">
+            <h1>Login</h1>
+            <figure>
+                <i class='bx bxs-user-circle' ></i>
+            </figure>
+            <form class="Login-form" action="/users/login" method="POST">
+                 <div>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                 </div>
+                 <div>
+                    <label for="password">Contraseña:</label>
+                    <input type="password" id="password" name="password" required>
+                 </div>
+                 <input type="submit" value="Ingresar">
+            </form>
+            <label for="register">Si no estas registrado da click <a href="/registro">Aqui</a> </label>
+        </div>
+    </div>
+</body>
+</html>

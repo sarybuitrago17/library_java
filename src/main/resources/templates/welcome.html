@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+:root {
+    --color1: rgb(121, 121, 214);
+    --color2: red;
+    --color3: green;
+    --color4: yellow;
+    --color5: white;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+li {
+    list-style: none;
+}
+img {
+    display: block;
+    width: 100%;
+    object-fit: contain;
+}
+/* Estilos para el cuerpo y los formularios */
+body {
+font-family: Arial, sans-serif;
+margin: 0;
+padding: 0;
+background-color: #f1f1f1;
+}
+
+form {
+margin-top: 20px;
+text-align: center;
+}
+
+/* Estilos para la barra de navegación */
+.navbar {
+background-color: var(--color1);
+overflow: hidden;
+position: fixed;
+width: 100%;
+top: 0;
+display: flex;
+align-items: center;
+padding: .5em;
+}
+
+.navbar a {
+float: left;
+display: block;
+color: white;
+text-align: center;
+padding: 14px 20px;
+text-decoration: none;
+width: 100%;
+max-width: 10em;
+}
+
+.navbar a:hover {
+background-color: #ddd;
+color: black;
+}
+.exit {
+    width: 100%;
+    margin-left: 10em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.exit > a {
+    background-color: var(--color2);
+    right: 0;
+    width: 100%;
+    max-width: 10em
+}
+.exit > h1 {
+    color: var(--color5);
+}
+
+/* Estilos para el contenedor principal */
+.container {
+    width: 100%;
+max-width: 70em;
+margin: 20px auto;
+padding: 20px;
+background-color: white;
+border-radius: 5px;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+margin-top: 7em;
+}
+
+/* Estilos para los botones */
+.button {
+background-color: #4CAF50;
+color: white;
+border: none;
+padding: 10px 20px;
+text-align: center;
+text-decoration: none;
+display: inline-block;
+font-size: 16px;
+margin: 4px 2px;
+cursor: pointer;
+border-radius: 5px;
+margin-top: 3em;
+margin-bottom: 3em;
+}
+
+.button:hover {
+background-color: #45a049;
+}
+.book-title {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 2em;
+    color: var(--color1);
+}
+
+/* Estilos para la lista de libros */
+.book-list {
+list-style: none;
+padding: 0;
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+align-items: center;
+gap: 1.5em;
+}
+
+.book-list-item {
+background-color: #f9f9f9;
+border: 1px solid #ddd;
+margin-top: 10px;
+padding: 10px;
+border-radius: 5px;
+}
+
+/* Estilos para los enlaces de los PDFs */
+.pdf-link {
+display: block;
+margin-top: 20px;
+text-align: center;
+color: #333;
+text-decoration: none;
+padding: 10px;
+background-color: #f1f1f1;
+border-radius: 5px;
+}
+
+.pdf-link:hover {
+background-color: #ddd;
+}
+.book-list > div {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 1em;
+    border-radius: .3em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 20em;
+    gap: 1em;
+}
+.book-list> div > h1 {
+    color: var(--color1);
+    font-size: 1.8em;
+}
+.book-list> div > i {
+    font-size: 6em;
+    color: var(--color1);
+}
+.book-list> div >ul {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+.book-list> div > ul > div {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 1em;
+}
+.book-list> div > ul > div > input {
+    width: 100%;
+    padding: .3em;
+    border: none;
+    background-color: var(--color3);
+    color: var(--color5);
+    border-radius: .3em;
+    font-size: 1em;
+    cursor: pointer;
+    border: 3px solid var(--color3);
+}
+.book-list> div > ul > div > input:hover {
+    filter: blur(.7px);
+    border: 3px solid var(--color1);
+}
+
+    </style>
+</head>
+<body>
+ <div class="navbar">
+        <a href="#">Inicio</a>
+        <a href="/addBook">Crear Libros</a>
+        <div class="exit">
+            <h1>Bienvenido a nuestra biblioteca🧑‍🏫</h1>
+            <a href="/">Cerar sesion</a>
+        </div>
+    </div>   
+
+
+ <div class="container">
+        
+        <div class="books">
+            <a id="invoiceLink" href="#" class="pdf-link" target="_blank">Ver PDF de factura</a>
+            <a id="loanReceiptLink" href="#" class="pdf-link" target="_blank">Generar PDF del préstamo del libro</a>
+            <button class="button" onclick={addFactura()}>enviar datos a la factura</button>
+            <button class="button" onclick={addFacturaPrestamo()}>enviar datos a la factura de prestamo</button>
+
+            <h1 class="book-title">Nuestros Libros📚</h1>
+            <ul id="books" class="book-list"></ul>
+                
+         </div>
+ </div>
+
+    <script>
+        let booksF = [];      
+        let booksP = [];
+
+        function idbookFactura(idF){
+            if (!booksF.includes(idF)) {
+                booksF.push(idF);
+                console.log(booksF);
+            } else {
+                console.log(`El libro con ID ${idF} ya está en la lista de facturas.`);
+            }
+        }
+
+        function idbookprestamo(idP){
+            if (!booksP.includes(idP)) {
+                booksP.push(idP);
+                console.log(booksP);
+            } else {
+                console.log(`El libro con ID ${idP} ya está en la lista de préstamos.`);
+            }
+        }
+
+        function addFactura() {
+            // Verificar si hay al menos un libro en booksF
+            if (booksF.length > 0) {
+                const data = { bookIds: booksF };
+                fetch('http://localhost:8080/api/invoices', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log('Respuesta de la API:', data);
+                    const invoiceId = data.id; // Suponiendo que la respuesta contiene el ID de la factura
+                    const invoiceLink = document.querySelector('#invoiceLink');
+                    invoiceLink.href = `/api/pdf/invoice/${invoiceId}`;
+                    alert("La factura de la compra de los libros está lista");
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert("Hubo un error al generar la factura de la compra de los libros");
+                });
+            } else {
+                console.log('No hay libros seleccionados para la factura.');
+            }
+        }
+
+        function addFacturaPrestamo() {
+            // Verificar si hay al menos un libro en booksP
+            if (booksP.length > 0) {
+                const data = { bookIds: booksP };
+                fetch('http://localhost:8080/api/loanreceipts', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log('Respuesta de la API:', data);
+                    const loanReceiptId = data.id; // Suponiendo que la respuesta contiene el ID del recibo de préstamo
+                    const loanReceiptLink = document.querySelector('#loanReceiptLink');
+                    loanReceiptLink.href = `/api/pdf/loanReceipt/${loanReceiptId}`;
+                    alert("La factura del préstamo de los libros está lista");
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert("Hubo un error al generar la factura del préstamo de los libros");
+                });
+            } else {
+                console.log('No hay libros seleccionados para la factura de préstamo.');
+            }
+        }
+
+        fetch('http://localhost:8080/api/libros') // Asegúrate de que esta URL sea correcta
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            const table = document.getElementById('books'); // Aquí usamos el ID correcto
+            let contenido = '';
+            data.forEach(book => {
+                contenido += `
+                    <div>
+                        <i>📚</i>
+                        <h1>${book.title}</h1>
+                        <ul>
+                            <li><b>Author:</b> ${book.author}</li> 
+                            <li><b>Numero de referencia:</b> ${book.isbn}</li> 
+                            <li><b>Precio del libro:</b> ${book.price}</li>
+                            <div>
+                                <input type="submit" onclick="idbookFactura(${book.id})" value="Comprar">
+                                <input type="submit" onclick="idbookprestamo(${book.id})" value="Pedir prestado">
+                            </div>
+                        </ul>            
+                    </div>
+                `;
+            });
+            table.innerHTML = contenido;
+        })
+        .catch(error => console.error('Error:', error));
+    </script>
+</body>
+</html>
